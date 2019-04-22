@@ -72,10 +72,10 @@ internal class UserNotificationsScheduler: Scheduler {
         
         content.body                               = notification.body
         
-        var sound: UNNotificationSound             = UNNotificationSound.default
+        var sound: UNNotificationSound             = UNNotificationSound.default()
         if let name = notification.sound.name {
             if name != RobinNotification.defaultSoundName {
-                sound                              = UNNotificationSound(named: UNNotificationSoundName(rawValue: name))
+                sound                              = UNNotificationSound(named: UNNotificationSoundName(string: name) as String)
             }
         } else {
             if let notificationSound = notification.sound.sound as? UNNotificationSound {
